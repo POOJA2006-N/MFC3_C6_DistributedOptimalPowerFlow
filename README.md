@@ -1,181 +1,57 @@
 # ⚡ Smart Grid Load Balancing using ADMM and MATPOWER
 
-## 📄 Reference Paper
-This project is based on:
-
-**Distributed Optimal Power Flow Using ADMM**  
-Tomaso Erseghe (IEEE, 2014)
+![Amrita University Logo](https://upload.wikimedia.org/wikipedia/en/5/5d/Amrita_Vishwa_Vidyapeetham_Logo.png)
 
 ---
 
-## 🧠 Project Overview
+## 👥 Team Members  
 
-This project implements a distributed optimization framework for solving the Optimal Power Flow (OPF) problem in smart grids using:
+- **Aparna.A** – CB.SC.U4AIE24206 
+- **Jenishaa Bharathi.M** – CB.SC.U4AIE24221 
+- **Police Aryan** – CB.SC.U4AIE24241
+-  **Pooja N** – CB.SC.U4AIE24242
+---
 
-- ADMM (Alternating Direction Method of Multipliers)  
-- MATPOWER (Power System Simulation Toolbox)  
+## 📑 Table of Contents  
 
-The goal is to achieve scalable and efficient load balancing.
+- [Abstract](#abstract)  
+- [Introduction](#introduction)  
+- [Methodology](#methodology)  
+- [Dataset](#dataset)  
+- [Results](#results)  
+- [Conclusion](#conclusion)  
+- [References](#references)  
 
 ---
 
-## 🚨 Problem Motivation
+## 📌 Abstract  
 
-Modern power grids face:
+This project presents a distributed optimization framework for smart grid load balancing using the Alternating Direction Method of Multipliers (ADMM). The Optimal Power Flow (OPF) problem is formulated to minimize generation cost while satisfying power balance and operational constraints. Traditional centralized approaches suffer from scalability issues; hence, ADMM is used to decompose the problem into smaller subproblems solved locally at each node. MATPOWER is used for realistic power system simulation. The results demonstrate improved scalability, efficient load distribution, and convergence to optimal solutions.
 
-- Increasing energy demand  
-- Renewable energy integration  
-- Network congestion  
+---
+
+## 📖 Introduction  
+
+Modern power systems are evolving into smart grids with increasing demand, renewable integration, and distributed generation. These changes introduce challenges such as:
+
 - Uneven load distribution  
+- Network congestion  
+- Inefficient power utilization  
 
-Traditional OPF methods are centralized and not scalable.
+The Optimal Power Flow (OPF) problem determines optimal operating conditions of a power system. However, traditional methods are:
 
----
+- Centralized  
+- Computationally expensive  
+- Not scalable  
 
-## 🎯 Objective
+This project uses ADMM to enable distributed optimization based on:
 
-- Model load balancing as an optimization problem  
-- Solve using ADMM  
-- Use MATPOWER for simulation  
-- Enable distributed computation  
-
----
-
-## ⚙️ Mathematical Formulation
-
-### Objective Function
-
-Minimize total generation cost:
-
-min Σ C_i(P_i), for all generators i ∈ G
+**Distributed Optimal Power Flow Using ADMM – Tomaso Erseghe (IEEE, 2014)**
 
 ---
 
-### Power Flow Constraints
+## ⚙️ Methodology  
 
-P_i = Σ V_i V_j (G_ij cosθ_ij + B_ij sinθ_ij)
+### 🔹 Problem Formulation  
 
----
-
-### Power Balance Constraint
-
-Σ P_generation = Σ P_demand
-
----
-
-### Generator Limits
-
-P_i(min) ≤ P_i ≤ P_i(max)
-
----
-
-## 🔁 ADMM Formulation
-
-We rewrite the optimization problem as:
-
-min f(x) + g(z)
-
-Subject to:
-
-x = z
-
----
-
-## 📐 Augmented Lagrangian
-
-Lρ(x, z, λ) = f(x) + g(z) + λᵀ(x − z) + (ρ/2)‖x − z‖²
-
----
-
-## 🔄 ADMM Iterations
-
-### 1️⃣ x-update
-
-x^(k+1) = argmin [ f(x) + (ρ/2)‖x − z^k + u^k‖² ]
-
----
-
-### 2️⃣ z-update
-
-z^(k+1) = argmin [ g(z) + (ρ/2)‖x^(k+1) − z + u^k‖² ]
-
----
-
-### 3️⃣ Dual Update
-
-u^(k+1) = u^k + x^(k+1) − z^(k+1)
-
----
-
-## 🧪 Methodology
-
-1. Load grid data using MATPOWER  
-2. Extract bus and generator data  
-3. Formulate OPF problem  
-4. Apply ADMM decomposition  
-5. Perform iterative updates  
-6. Check convergence  
-
----
-
-## 🔗 Role of MATPOWER
-
-MATPOWER provides:
-
-- Grid modeling (buses, generators, transmission lines)  
-- Power flow computation  
-- Optimal Power Flow (OPF)  
-
-In this project:
-
-- MATPOWER handles system physics  
-- ADMM handles optimization  
-
----
-
-## 📊 Results
-
-- Balanced power distribution  
-- Reduced generation cost  
-- Scalable optimization  
-- Distributed computation achieved  
-
----
-
-## 📈 Comparison
-
-| Aspect | Traditional OPF | ADMM-Based OPF |
-|--------|----------------|----------------|
-| Structure | Centralized | Distributed |
-| Scalability | Low | High |
-| Computation | Heavy | Parallel |
-| Flexibility | Low | High |
-
----
-
-## ⚠️ Challenges
-
-- Parameter tuning (ρ)  
-- Convergence issues  
-- Non-convex nature of OPF  
-
----
-
-## 🚀 Future Scope
-
-- Renewable energy integration  
-- Real-time smart grid systems  
-- AI + ADMM hybrid optimization  
-- Large-scale deployment  
-
----
-
-## 🧾 Conclusion
-
-This project demonstrates how ADMM-based distributed optimization enables:
-
-- Efficient power distribution  
-- Scalable smart grid operation  
-- Practical implementation of OPF  
-
----
+Minimize generation cost:
