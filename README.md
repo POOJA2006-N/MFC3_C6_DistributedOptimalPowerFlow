@@ -10,11 +10,7 @@
 
 ---
 
-![MATLAB](https://img.shields.io/badge/MATLAB-Simulation-orange)
-![Algorithm](https://img.shields.io/badge/Algorithm-ADMM-blue)
-![Domain](https://img.shields.io/badge/Domain-Smart%20Grid-green)
 
----
 
 ## 👥 Team Members  
 
@@ -23,6 +19,7 @@
 - **Police Aryan** – CB.SC.U4AIE24241
 -  **Pooja N** – CB.SC.U4AIE24242
 ---
+
 
 ## 📑 Table of Contents  
 
@@ -56,7 +53,7 @@ The Optimal Power Flow (OPF) problem determines optimal operating conditions of 
 - Computationally expensive  
 - Not scalable  
 
-This project uses ADMM to enable distributed optimization based on:
+This project uses distributed optimization based on:
 
 **Distributed Optimal Power Flow Using ADMM – Tomaso Erseghe (IEEE, 2014)**
 
@@ -66,4 +63,120 @@ This project uses ADMM to enable distributed optimization based on:
 
 ### 🔹 Problem Formulation  
 
-Minimize generation cost:
+Minimize total generation cost:
+
+**min Σ Ci(Pi)**  
+
+Subject to:
+
+**Power Balance Constraint:**  
+Σ Pg = Σ Pd  
+
+**Generator Limits:**  
+Pi_min ≤ Pi ≤ Pi_max  
+
+**Power Flow Equation:**  
+Pi = Σ V_i V_j (G_ij cosθ + B_ij sinθ)  
+
+---
+
+### 🔹 ADMM Reformulation  
+
+min f(x) + g(z)  
+subject to x = z  
+
+---
+
+### 🔹 Augmented Lagrangian  
+
+L(x,z,λ) = f(x) + g(z) + λᵀ(x − z) + (ρ/2)||x − z||²  
+
+---
+
+### 🔹 ADMM Updates  
+
+**x-update:**  
+x(k+1) = argmin f(x) + (ρ/2)||x − z + u||²  
+
+**z-update:**  
+z(k+1) = argmin g(z) + (ρ/2)||x − z + u||²  
+
+**Dual update:**  
+u(k+1) = u(k) + x(k+1) − z(k+1)  
+
+---
+
+### 🔹 Implementation Steps  
+
+1. Load grid data using MATPOWER  
+2. Extract bus and generator data  
+3. Define cost functions and constraints  
+4. Apply ADMM decomposition  
+5. Perform iterative updates  
+6. Check convergence  
+
+---
+
+## 📊 Dataset  
+
+- IEEE standard bus systems (14-bus, 30-bus, etc.)  
+- Available within MATPOWER  
+
+👉 No external dataset required  
+
+---
+
+## 📈 Results  
+
+### 🔹 Observations  
+
+- Efficient load balancing achieved  
+- Reduced generation cost  
+- ADMM converges after iterations  
+
+---
+
+### 🔹 Graph  
+
+![Convergence Graph](images/result.png)
+
+**Fig 1:** ADMM convergence behavior over iterations  
+
+---
+
+### 🔹 Comparison  
+
+| Method | Performance |
+|------|------------|
+| Centralized OPF | Accurate but not scalable |
+| ADMM-Based OPF | Scalable and efficient |
+
+---
+
+## 🧾 Conclusion  
+
+This project demonstrates that ADMM-based distributed optimization is an effective approach for solving large-scale smart grid load balancing problems. By combining MATPOWER for system modeling and ADMM for optimization, the system achieves scalable and efficient performance suitable for modern smart grids.
+
+---
+
+## 📁 Project Structure  
+```
+matpower-master/
+admm_code/
+data/
+results/
+images/
+README.md
+```
+
+
+---
+
+## 📚 References  
+
+1. Distributed Optimal Power Flow Using ADMM – Tomaso Erseghe (IEEE, 2014)  
+2. MATPOWER Documentation  
+3. Boyd et al. – ADMM Optimization  
+4. Power System Analysis textbooks  
+
+---
