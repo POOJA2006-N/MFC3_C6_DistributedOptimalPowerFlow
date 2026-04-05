@@ -1,6 +1,18 @@
-# ⚡ Smart Grid Load Balancing using ADMM and MATPOWER
+<p align="center">
+  <img src="logo.png" width="160"/>
+</p>
 
-![Amrita University Logo](https://upload.wikimedia.org/wikipedia/en/5/5d/Amrita_Vishwa_Vidyapeetham_Logo.png)
+<h1 align="center">⚡ Smart Grid Load Balancing using ADMM and MATPOWER</h1>
+
+<p align="center">
+  Distributed Optimization for Smart Grids using ADMM & MATPOWER
+</p>
+
+---
+
+![MATLAB](https://img.shields.io/badge/MATLAB-Simulation-orange)
+![Algorithm](https://img.shields.io/badge/Algorithm-ADMM-blue)
+![Domain](https://img.shields.io/badge/Domain-Smart%20Grid-green)
 
 ---
 
