@@ -2,10 +2,11 @@
   <img src="logo.png" width="160"/>
 </p>
 
-<h1 align="center">⚡ Smart Grid Load Balancing using ADMM and MATPOWER</h1>
-
+<h1 align="center">
+ ⚡ Distributed Optimal Power Flow  using ADMM 
+</h1>
 <p align="center">
-  Distributed Optimization for Smart Grids using ADMM & MATPOWER
+  	22MAT220: Mathematics for Computing 3
 </p>
 
 ---
@@ -65,7 +66,7 @@ This project uses distributed optimization based on:
 
 Minimize total generation cost:
 
-**min Σ Ci(Pi)**  
+![equation](https://latex.codecogs.com/png.image?\min\sum C_i(P_i))
 
 Subject to:
 
@@ -96,7 +97,7 @@ L(x,z,λ) = f(x) + g(z) + λᵀ(x − z) + (ρ/2)||x − z||²
 ### 🔹 ADMM Updates  
 
 **x-update:**  
-x(k+1) = argmin f(x) + (ρ/2)||x − z + u||²  
+$$x(k+1) = argmin f(x) + (ρ/2)||x − z + u||²  $$
 
 **z-update:**  
 z(k+1) = argmin g(z) + (ρ/2)||x − z + u||²  
