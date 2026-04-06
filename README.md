@@ -66,31 +66,31 @@ This project uses distributed optimization based on:
 
 Minimize total generation cost:
 
-![equation](https://latex.codecogs.com/png.image?\min\sum C_i(P_i))
+$$min Σ Ci(Pi)$$
 
 Subject to:
 
 **Power Balance Constraint:**  
-Σ Pg = Σ Pd  
+$$ Σ Pg = Σ Pd  $$
 
 **Generator Limits:**  
-Pi_min ≤ Pi ≤ Pi_max  
+$$ Pi_min ≤ Pi ≤ Pi_max  $$
 
 **Power Flow Equation:**  
-Pi = Σ V_i V_j (G_ij cosθ + B_ij sinθ)  
+$$ Pi = Σ V_i V_j (G_ij cosθ + B_ij sinθ)   $$
 
 ---
 
 ### 🔹 ADMM Reformulation  
 
-min f(x) + g(z)  
-subject to x = z  
+$$ min f(x) + g(z)  $$
+subject to $$ x = z  $$
 
 ---
 
 ### 🔹 Augmented Lagrangian  
 
-L(x,z,λ) = f(x) + g(z) + λᵀ(x − z) + (ρ/2)||x − z||²  
+$$L(x,z,λ) = f(x) + g(z) + λᵀ(x − z) + (ρ/2)||x − z||²  $$
 
 ---
 
