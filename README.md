@@ -71,13 +71,13 @@ $$min Σ Ci(Pi)$$
 Subject to:
 
 **Power Balance Constraint:**  
-$$ Σ Pg = Σ Pd  $$
+$$Σ Pg = Σ Pd $$
 
 **Generator Limits:**  
-$$ Pi_min ≤ Pi ≤ Pi_max  $$
+$$ Pi_min ≤ Pi ≤ Pi_max $$
 
 **Power Flow Equation:**  
-$$ Pi = Σ V_i V_j (G_ij cosθ + B_ij sinθ)   $$
+$$Pi = Σ V_i V_j (G_ij cosθ + B_ij sinθ) $$
 
 ---
 
